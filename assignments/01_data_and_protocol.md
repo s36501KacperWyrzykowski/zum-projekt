@@ -46,14 +46,14 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
     * *Zagrożenie:* Zawodnicy grający w tym samym klubie charakteryzują się często podobną strukturą zarobków wynikającą z polityki finansowej drużyny. Gdyby zawodnicy z tego samego klubu trafili zarówno do zbioru treningowego (Train), jak i testowego, model mógłby „nauczyć się” specyfiki klubu zamiast uogólniać cechy zawodnika.
     * *Zabezpieczenie:* Zastosowano **podział grupowy (`GroupShuffleSplit`) na poziomie nazwy klubu (`club_name`)**. Dzięki temu kluby w zbiorach Train, Validation i Final Test są całkowicie rozłączne (co potwierdził automatyczny audyt wykazujący 0 wspólnych klubów między podziałami).
 *  Wyciek poprzez cechy finansowe (Leakage Features):
-  * *Zagrożenie:* Kolumny takie jak rynkowa wartość zawodnika (`value_eur`) czy klauzula odstępnego (`release_clause_eur`) są niemal bezpośrednio matematycznie lub rynkowo powiązane z rocznym wynagrodzeniem (`wage_eur`). Ich obecność w cechach wejściowych doprowadziłaby do natychmiastowego „oszukania” modelu.
-  * *Zabezpieczenie:* Cechy te zostały **całkowicie usunięte** ze zbioru danych przed rozpoczęciem jakichkolwiek eksperymentów modelowych.
-* **3. Wyciek poprzez wyznaczanie progów klasowych:**
-  * *Zagrożenie:* Obliczenie progów percentylowych (25% i 75%) dla podziału zarobków na całym zbiorze danych uwzględniałoby informacje z przyszłości (ze zbioru testowego).
-  * *Zabezpieczenie:* Progi percentylowe definiujące klasy (`Niski`, `Średni`, `Wysoki`) wyznaczono **wyłącznie na zbiorze treningowym**, a następnie zastosowano je bez żadnych modyfikacji do zbiorów walidacyjnego i testowego.
-* **4. Duplikaty i powtórzenia:**
-  * *Zagrożenie:* Obecność tego samego piłkarza w różnych wariantach w bazie danych mogłaby spowodować, że duplikat trafi do treningu, a inny do testu.
-  * *Zabezpieczenie:* Wykonano wstępne czyszczenie danych, usuwając duplikaty na podstawie unikalnego identyfikatora zawodnika (`player_id`).
+    * *Zagrożenie:* Kolumny takie jak rynkowa wartość zawodnika (`value_eur`) czy klauzula odstępnego (`release_clause_eur`) są niemal bezpośrednio matematycznie lub rynkowo powiązane z rocznym wynagrodzeniem (`wage_eur`). Ich obecność w cechach wejściowych doprowadziłaby do natychmiastowego „oszukania” modelu.
+    * *Zabezpieczenie:* Cechy te zostały **całkowicie usunięte** ze zbioru danych przed rozpoczęciem jakichkolwiek eksperymentów modelowych.
+*  Wyciek poprzez wyznaczanie progów klasowych:
+    * *Zagrożenie:* Obliczenie progów percentylowych (25% i 75%) dla podziału zarobków na całym zbiorze danych uwzględniałoby informacje z przyszłości (ze zbioru testowego).
+    * *Zabezpieczenie:* Progi percentylowe definiujące klasy (`Niski`, `Średni`, `Wysoki`) wyznaczono **wyłącznie na zbiorze treningowym**, a następnie zastosowano je bez żadnych modyfikacji do zbiorów walidacyjnego i testowego.
+*  Duplikaty i powtórzenia:
+    * *Zagrożenie:* Obecność tego samego piłkarza w różnych wariantach w bazie danych mogłaby spowodować, że duplikat trafi do treningu, a inny do testu.
+    * *Zabezpieczenie:* Wykonano wstępne czyszczenie danych, usuwając duplikaty na podstawie unikalnego identyfikatora zawodnika (`player_id`).
 6. Podział train, validation i final test zgodny z jednostką generalizacji: grupowy, stratyfikowany, czasowy albo oficjalny, z uzasadnieniem.
 * **Typ podziału:** Grupowa walidacja krzyżowa / podział grupowy (*Group Shuffle Split*) połączony z podziałem hierarchicznym.
 * **Uzasadnienie wyboru metody:** 
