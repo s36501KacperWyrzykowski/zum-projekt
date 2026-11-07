@@ -42,10 +42,10 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
     - Liczba przykładów (piłkarzy): 3698
     - Liczba niezależnych jednostek (klubów): 134*
 5. Potencjalne źródła wycieku danych w Twoim zbiorze i sposób, w jaki im zapobiegasz. Typowe źródła to te same osoby, nagrania, dokumenty albo źródła po obu stronach podziału, duplikaty, augmentacje i zależności czasowe.
-* **1. Wyciek na poziomie jednostki generalizacji (wspólne kluby po obu stronach podziału):**
+*  Wyciek na poziomie jednostki generalizacji (wspólne kluby po obu stronach podziału):
   * *Zagrożenie:* Zawodnicy grający w tym samym klubie charakteryzują się często podobną strukturą zarobków wynikającą z polityki finansowej drużyny. Gdyby zawodnicy z tego samego klubu trafili zarówno do zbioru treningowego (Train), jak i testowego, model mógłby „nauczyć się” specyfiki klubu zamiast uogólniać cechy zawodnika.
   * *Zabezpieczenie:* Zastosowano **podział grupowy (`GroupShuffleSplit`) na poziomie nazwy klubu (`club_name`)**. Dzięki temu kluby w zbiorach Train, Validation i Final Test są całkowicie rozłączne (co potwierdził automatyczny audyt wykazujący 0 wspólnych klubów między podziałami).
-* **2. Wyciek poprzez cechy finansowe (Leakage Features):**
+*  Wyciek poprzez cechy finansowe (Leakage Features):
   * *Zagrożenie:* Kolumny takie jak rynkowa wartość zawodnika (`value_eur`) czy klauzula odstępnego (`release_clause_eur`) są niemal bezpośrednio matematycznie lub rynkowo powiązane z rocznym wynagrodzeniem (`wage_eur`). Ich obecność w cechach wejściowych doprowadziłaby do natychmiastowego „oszukania” modelu.
   * *Zabezpieczenie:* Cechy te zostały **całkowicie usunięte** ze zbioru danych przed rozpoczęciem jakichkolwiek eksperymentów modelowych.
 * **3. Wyciek poprzez wyznaczanie progów klasowych:**
