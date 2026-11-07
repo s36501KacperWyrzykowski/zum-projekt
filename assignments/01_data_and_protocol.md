@@ -33,14 +33,14 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
     * L. Messi;       90;   23000.0;          CF; CAM;  Technical +, Finesse Shot, Dead Ball, Pinged Pass, Tiki Taka, Quick Step, Trivela
 4. Liczba niezależnych jednostek generalizacji w train, validation i final test, obok liczby przykładów. Na przykład 8000 nagrań może pochodzić tylko od 24 mówców. Wtedy podajesz zarówno liczbę nagrań, jak i liczbę mówców w każdym zbiorze. Jeżeli liczba niezależnych jednostek w validation albo final test jest mała, skomentuj, jak może to wpływać na stabilność estymaty.
 *  Zbiór Train:
-  * - Liczba przykładów (piłkarzy): 10974
-  * - Liczba niezależnych jednostek (klubów): 402
+    - Liczba przykładów (piłkarzy): 10974
+    - Liczba niezależnych jednostek (klubów): 402
 *  Zbiór Validation:
-  * - Liczba przykładów (piłkarzy): 3591
-  * - Liczba niezależnych jednostek (klubów): 134
+    - Liczba przykładów (piłkarzy): 3591
+    - Liczba niezależnych jednostek (klubów): 134
 *  Zbiór Final Test:
-  * - Liczba przykładów (piłkarzy): 3698
-  * - Liczba niezależnych jednostek (klubów): 134*
+    - Liczba przykładów (piłkarzy): 3698
+    - Liczba niezależnych jednostek (klubów): 134*
 5. Potencjalne źródła wycieku danych w Twoim zbiorze i sposób, w jaki im zapobiegasz. Typowe źródła to te same osoby, nagrania, dokumenty albo źródła po obu stronach podziału, duplikaty, augmentacje i zależności czasowe.
 * **1. Wyciek na poziomie jednostki generalizacji (wspólne kluby po obu stronach podziału):**
   * *Zagrożenie:* Zawodnicy grający w tym samym klubie charakteryzują się często podobną strukturą zarobków wynikającą z polityki finansowej drużyny. Gdyby zawodnicy z tego samego klubu trafili zarówno do zbioru treningowego (Train), jak i testowego, model mógłby „nauczyć się” specyfiki klubu zamiast uogólniać cechy zawodnika.
