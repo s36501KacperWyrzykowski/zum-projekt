@@ -15,20 +15,21 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
 2. Jednostka generalizacji z uzasadnieniem: do jakich przyszłych danych ma działać model.
    * Jednostką generalizacji jest pojedynczy piłkarz. Model ma działać dla zawodników z nowych klubów/lig, których algorytm wcześniej nie widział, co sprawdzimy dzieląc dane na poziomie klubów.
 3. Audyt danych:
-   * liczba przykładów i rozkład klas: *
-   * W zbiorze znajduje się 18350 unikalnych piłkarzy z edycji FC 24. Rozkład klas na zbiorze treningowym wynosi odpowiednio: ok. 25% (Niski), 50% (Średni), 25% (Wysoki).*
-  *  braki danych: *Rekordy z brakami w kluczowych zmiennych (`club_name` lub `wage_eur`) zostały odfiltrowane.
+   * liczba przykładów i rozkład klas:
+     W zbiorze znajduje się 18350 unikalnych piłkarzy z edycji FC 24. Rozkład klas na zbiorze treningowym wynosi odpowiednio: ok. 25% (Niski), 50% (Średni), 25% (Wysoki).
+  *  braki danych:
+      Rekordy z brakami w kluczowych zmiennych (`club_name` lub `wage_eur`) zostały odfiltrowane.
       W kolumnie `player_traits` braki oznaczają, że zawodnik nie ma przypisanych specjalnych cech i zostały zastąpione pustym ciągiem znaków*
-     duplikaty (co najmniej dokładne, a jeśli to możliwe, także bardzo podobne); *Zostało dodane sprawdzanie duplikatów po kolumnie (*player_id*)., ale nie występują.*
+     duplikaty (co najmniej dokładne, a jeśli to możliwe, także bardzo podobne); *Zostało dodane sprawdzanie duplikatów po kolumnie (*player_id*)., ale nie występują.
   *  podstawowe statystyki wejścia (długość tekstu, rozmiar obrazu, czas trwania nagrania):
-*Kolumna 'player_traits': średnia długość = 8.9 znaków, max = 91 znaków
-Kolumna 'player_positions': średnia długość = 5.1 znaków, max = 13 znaków*
-      kilka przykładów.
-  *   short_name  overall  wage_eur player_positions                                                                      player_traits
+Kolumna 'player_traits': średnia długość = 8.9 znaków, max = 91 znaków
+Kolumna 'player_positions': średnia długość = 5.1 znaków, max = 13 znaków
+  *    kilka przykładów:
+     short_name  overall  wage_eur player_positions                                                                      player_traits
 0     K. Mbappé       91  230000.0           ST, LW                                                Quick Step +, Rapid, Flair, Trivela
 1    E. Haaland       91  340000.0               ST                                              Acrobatic +, Power Header, Quick Step
 2  K. De Bruyne       91  350000.0          CM, CAM    Pinged Pass +, Dead Ball, Incisive Pass, Long Ball Pass, Whipped Cross, Trivela
-3      L. Messi       90   23000.0          CF, CAM  Technical +, Finesse Shot, Dead Ball, Pinged Pass, Tiki Taka, Quick Step, Trivela*
+3      L. Messi       90   23000.0          CF, CAM  Technical +, Finesse Shot, Dead Ball, Pinged Pass, Tiki Taka, Quick Step, Trivela
 4. Liczba niezależnych jednostek generalizacji w train, validation i final test, obok liczby przykładów. Na przykład 8000 nagrań może pochodzić tylko od 24 mówców. Wtedy podajesz zarówno liczbę nagrań, jak i liczbę mówców w każdym zbiorze. Jeżeli liczba niezależnych jednostek w validation albo final test jest mała, skomentuj, jak może to wpływać na stabilność estymaty. *
 Zbiór Train:
   - Liczba przykładów (piłkarzy): 10974
