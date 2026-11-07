@@ -98,32 +98,38 @@ Uzupełniaj sekcje w zadaniach podanych w nawiasach. Zastępuj teksty w nawiasac
 
 ## Informacje ogólne
 
-* Tytuł: [tytuł projektu]
-* Autor: [imię i nazwisko]
-* Modalność: [tekst, obraz, audio albo dane multimodalne]
-* Problem klasyfikacji: [co jest klasą, ile jest klas]
+* Tytuł: Predykcja przedziałów zarobków piłkarzy z wykorzystaniem statystyk liczbowych i reprezentacji tekstowych.
+* Autor: Kacper Wyrzykowski
+* Modalność: Dane numeryczne oraz tekstowe.
+* Problem klasyfikacji: Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (`Niski`, `Średni`, `Wysoki`).
 
 ## Problem i pytanie eksperymentalne (Zadanie 1)
 
-[Jaki problem rozwiązujesz i co dokładnie chcesz sprawdzić.]
+Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statystyk liczbowych poprawi skuteczność klasyfikacji **(Macro-F1)** na nowych, nieznanych zawodnikach?
 
 ## Dane i licencja (Zadanie 1)
 
-[Źródło i link, licencja, sposób pobrania, liczba przykładów, lista klas, sposób oznaczenia etykiet, znane ograniczenia.]
+- **Źródło i link**: Publiczny zbiór danych dotyczący piłkarzy z EA FC: https://www.kaggle.com/datasets/stefanoleone992/ea-sports-fc-24-complete-player-dataset
+- **Licencja**: Licencja typu Open Source.
+- **Sposób pobrania**: Pobrany bezpośrednio z repozytorium źródłowego Kaggle i umieszczony lokalnie w katalogu projektu.
+- **Liczba przykładów**: Łącznie 18350 wierszy w pełnym zbiorze (po podziale: 10974 trening, 3591 walidacja, 3698 test).
+- **Lista klas**: Trzy przedziały zarobków: `Niski`, `Średni`, `Wysoki`.
+- **Sposób oznaczenia etykiet**: Etykiety zostały wyznaczone poprzez podział ciągłej zmiennej zarobków na trzy rozłączne przedziały.
+- **Znane ograniczenia**: Nierównomierny rozkład klas (w klasie zarobków wysokich znajduje się znacznie mniej zawodników niż w niskich), co wymaga zastosowania odpowiednich metryk (Macro-F1).
 
 ## Protokół (Zadanie 1)
 
-* Jednostka generalizacji: [na przykład recenzja, pacjent, mówca, nagranie źródłowe]
-* Podział: [metoda i uzasadnienie]
-* Metryka główna i pomocnicze: [z uzasadnieniem]
-* Seed: [wartość]
+* Jednostka generalizacji: Jednostką generalizacji jest pojedynczy piłkarz.
+* Podział: Podział losowy z zachowaniem proporcji klas: 60% (train), 20% (validation) oraz 20% (final test).
+* Metryka główna i pomocnicze: Metryka główna: Macro-F1, Metryka pomocnicza: Accuracy (Dokładność). Dzięki Macro-F1, model nie faworyzuje najliczniejszej klasy.
+* Seed: `random_state = 42`
 * Final test: zamrożony w commicie z tagiem `task-1`, identyfikatory w `splits/`. Jeśli podział był później poprawiany, podaj commit poprawionej wersji i opisz zmianę w dzienniku zmian.
 
 | Zbiór | Liczba przykładów | Liczba niezależnych jednostek |
 |---|---|---|
-| train | | |
-| validation | | |
-| final test | | |
+| train | 10974 | 402 |
+| validation | 3591 | 134 |
+| final test | 3698 | 134 |
 
 ## Wyniki (Zadania 2 do 5)
 
