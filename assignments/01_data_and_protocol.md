@@ -56,7 +56,6 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
     * *Zabezpieczenie:* Wykonano wstępne czyszczenie danych, usuwając duplikaty na podstawie unikalnego identyfikatora zawodnika (`player_id`).
 6. Podział train, validation i final test zgodny z jednostką generalizacji: grupowy, stratyfikowany, czasowy albo oficjalny, z uzasadnieniem.
 * **Typ podziału:** Grupowa walidacja krzyżowa / podział grupowy (*Group Shuffle Split*) połączony z podziałem hierarchicznym.
-* **Uzasadnienie wyboru metody:** 
   - Wybrano **podział grupowy** z uwagi na zdefiniowaną jednostkę generalizacji, którą jest pojedynczy piłkarz w kontekście jego przynależności klubowej (`club_name`). 
   - W tradycyjnym podziale losowym zawodnicy z tego samego klubu mogliby trafić zarówno do zbioru treningowego, jak i testowego, co prowadziłoby do wycieku danych (kluby mają wspólną specyfikę finansową i treningową). Podział grupowy gwarantuje, że całe kluby wraz ze wszystkimi swoimi zawodnikami trafiają albo wyłącznie do zbioru treningowego, albo wyłącznie do walidacyjnego, albo do zamrożonego testu ostatecznego.
   - Zastosowano proporcje podziału wynoszące w przybliżeniu: **60% Train, 20% Validation oraz 20% Final Test**, zrealizowane dwuetapowo za pomocą biblioteki `scikit-learn` (`GroupShuffleSplit`), co zapewniło stabilność liczności próbek oraz pełną rozłączność klubową, co zostało zweryfikowane automatycznym skryptem audytowym.
