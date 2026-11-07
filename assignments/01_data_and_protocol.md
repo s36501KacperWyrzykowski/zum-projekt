@@ -10,7 +10,7 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
 ## Wymagania
 
 1. Problem klasyfikacji i pytanie eksperymentalne.
-   * Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (Niski, Średni, Wysoki). Pytanie eksperymentalne: czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statystyk liczbowych poprawi skuteczność klasyfikacji (Macro-F1) na nowych, nieznanych zawodnikach?*
+   *Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (Niski, Średni, Wysoki). Pytanie eksperymentalne: czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statystyk liczbowych poprawi skuteczność klasyfikacji (Macro-F1) na nowych, nieznanych zawodnikach?
 2. Jednostka generalizacji z uzasadnieniem: do jakich przyszłych danych ma działać model.
    Jednostką generalizacji jest pojedynczy piłkarz. Model ma działać dla zawodników z nowych klubów/lig, których algorytm wcześniej nie widział, co sprawdzimy dzieląc dane na poziomie klubów.
 3. Audyt danych:
