@@ -19,7 +19,7 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
      * W zbiorze znajduje się 18350 unikalnych piłkarzy z edycji FC 24. Rozkład klas na zbiorze treningowym wynosi odpowiednio: ok. 25% (Niski), 50% (Średni), 25% (Wysoki).
 *  Braki danych:
       * Rekordy z brakami w kluczowych zmiennych (`club_name` lub `wage_eur`) zostały odfiltrowane.
-      W kolumnie `player_traits` braki oznaczają, że zawodnik nie ma przypisanych specjalnych cech i zostały zastąpione pustym ciągiem znaków.
+      * W kolumnie `player_traits` braki oznaczają, że zawodnik nie ma przypisanych specjalnych cech i zostały zastąpione pustym ciągiem znaków.
 *  Duplikaty (co najmniej dokładne, a jeśli to możliwe, także bardzo podobne):
      * Zostało dodane sprawdzanie duplikatów po kolumnie (*player_id*)., ale nie występują.
 *  Podstawowe statystyki wejścia (długość tekstu, rozmiar obrazu, czas trwania nagrania):
