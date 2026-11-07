@@ -69,8 +69,8 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
   Zastosowanie: Ustawione we wszystkich funkcjach losujących i podziałowych (np. `GroupShuffleSplit`). Zapewnia to pełną reprodukowalność eksperymentu oraz identyczne wyniki podziału danych przy każdym uruchomieniu skryptu.*
 9. Licencja i podstawowa dokumentacja danych: skąd pochodzą, jak oznaczono klasy, znane ograniczenia.
 * Źródło: EA Sports FC 24 complete player dataset (zbiór publiczny z platformy Kaggle / bazujący na danych SoFIFA).
-  Licencja: CC0: Public Domain / Open Data Commons.
-  Oznaczenie klas:** Klasy zarobkowe (`Niski`, `Średni`, `Wysoki`) wyznaczono automatycznie na podstawie 25. i 75. percentylu rocznych zarobków (`wage_eur`) wyliczonych wyłącznie na zbiorze treningowym.*
+* Licencja: CC0: Public Domain / Open Data Commons.
+* Oznaczenie klas:** Klasy zarobkowe (`Niski`, `Średni`, `Wysoki`) wyznaczono automatycznie na podstawie 25. i 75. percentylu rocznych zarobków (`wage_eur`) wyliczonych wyłącznie na zbiorze treningowym.*
 10. Zamrożenie final test. Identyfikatory przykładów każdego zbioru zapisujesz w `splits/` ([opis formatu](../splits/README.md)), robisz commit i tworzysz tag `task-1`. Od tej chwili nie uruchamiasz na final test żadnego modelu. Jeśli później musisz poprawić podział, stosujesz procedurę z [zasad projektu](../PROJECT_RULES.md) (część 6, „Poprawa podziału po Zadaniu 1”).
 
 ## Co oddajesz
