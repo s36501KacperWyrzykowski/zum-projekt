@@ -9,8 +9,10 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
 
 ## Wymagania
 
-1. Problem klasyfikacji i pytanie eksperymentalne.  *Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (Niski, Średni, Wysoki). Pytanie eksperymentalne: czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statystyk liczbowych poprawi skuteczność klasyfikacji (Macro-F1) na nowych, nieznanych zawodnikach?*
-2. Jednostka generalizacji z uzasadnieniem: do jakich przyszłych danych ma działać model. *Jednostką generalizacji jest pojedynczy piłkarz. Model ma działać dla zawodników z nowych klubów/lig, których algorytm wcześniej nie widział, co sprawdzimy dzieląc dane na poziomie klubów*
+1. Problem klasyfikacji i pytanie eksperymentalne.
+   Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (Niski, Średni, Wysoki). Pytanie eksperymentalne: czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statystyk liczbowych poprawi skuteczność klasyfikacji (Macro-F1) na nowych, nieznanych zawodnikach?*
+2. Jednostka generalizacji z uzasadnieniem: do jakich przyszłych danych ma działać model.
+   Jednostką generalizacji jest pojedynczy piłkarz. Model ma działać dla zawodników z nowych klubów/lig, których algorytm wcześniej nie widział, co sprawdzimy dzieląc dane na poziomie klubów.
 3. Audyt danych:
    liczba przykładów i rozkład klas: *W zbiorze znajduje się 18350 unikalnych piłkarzy z edycji FC 24. Rozkład klas na zbiorze treningowym wynosi odpowiednio: ok. 25% (Niski), 50% (Średni), 25% (Wysoki).*
       braki danych: *Rekordy z brakami w kluczowych zmiennych (`club_name` lub `wage_eur`) zostały odfiltrowane.
