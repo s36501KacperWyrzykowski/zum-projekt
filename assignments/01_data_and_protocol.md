@@ -55,14 +55,14 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
     * *Zagrożenie:* Obecność tego samego piłkarza w różnych wariantach w bazie danych mogłaby spowodować, że duplikat trafi do treningu, a inny do testu.
     * *Zabezpieczenie:* Wykonano wstępne czyszczenie danych, usuwając duplikaty na podstawie unikalnego identyfikatora zawodnika (`player_id`).
 6. Podział train, validation i final test zgodny z jednostką generalizacji: grupowy, stratyfikowany, czasowy albo oficjalny, z uzasadnieniem.
-* **Typ podziału:** Grupowa walidacja krzyżowa / podział grupowy (*Group Shuffle Split*) połączony z podziałem hierarchicznym.
+* Typ podziału: Grupowa walidacja krzyżowa / podział grupowy (*Group Shuffle Split*) połączony z podziałem hierarchicznym.
   - Wybrano **podział grupowy** z uwagi na zdefiniowaną jednostkę generalizacji, którą jest pojedynczy piłkarz w kontekście jego przynależności klubowej (`club_name`). 
   - W tradycyjnym podziale losowym zawodnicy z tego samego klubu mogliby trafić zarówno do zbioru treningowego, jak i testowego, co prowadziłoby do wycieku danych (kluby mają wspólną specyfikę finansową i treningową). Podział grupowy gwarantuje, że całe kluby wraz ze wszystkimi swoimi zawodnikami trafiają albo wyłącznie do zbioru treningowego, albo wyłącznie do walidacyjnego, albo do zamrożonego testu ostatecznego.
   - Zastosowano proporcje podziału wynoszące w przybliżeniu: **60% Train, 20% Validation oraz 20% Final Test**, zrealizowane dwuetapowo za pomocą biblioteki `scikit-learn` (`GroupShuffleSplit`), co zapewniło stabilność liczności próbek oraz pełną rozłączność klubową, co zostało zweryfikowane automatycznym skryptem audytowym.
 7. Metryka główna i pomocnicze, z uzasadnieniem (na przykład macro F1 przy nierównych klasach).
-* **Metryka główna: Macro-F1**
+* Metryka główna: Macro-F1
   * *Uzasadnienie:* Problem klasyfikacji zarobków jest wieloklasowy (3 klasy: Niski, Średni, Wysoki), a rozkład klas wykazuje naturalną nierównowagę (klasa średnia liczy ok. 50% przykładów, natomiast klasy skrajne po ok. 25%). Metryka **Macro-F1** oblicza średnią arytmetyczną miary F1 dla każdej klasy niezależnie, dzięki czemu traktuje każdą klasę z równą wagą. Zapobiega to sytuacji, w której model faworyzowałby najliczniejszą klasę średnią kosztem dokładności w klasach skrajnych.
-* **Metryka pomocnicza: Accuracy (Dokładność) oraz Precision / Recall per klasa**
+* Metryka pomocnicza: Accuracy (Dokładność) oraz Precision / Recall per klasa
   * *Uzasadnienie:* Umożliwiają bieżącą weryfikację ogólnego odsetka poprawnych trafień oraz szczegółową analizę błędów popełnianych przez model w podziale na poszczególne przedziały zarobkowe.
 8. Seed i zasady losowości.
 * Wartość seed: `random_state = 42`
