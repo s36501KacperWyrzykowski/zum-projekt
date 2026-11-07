@@ -19,14 +19,14 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
      * W zbiorze znajduje się 18350 unikalnych piłkarzy z edycji FC 24. Rozkład klas na zbiorze treningowym wynosi odpowiednio: ok. 25% (Niski), 50% (Średni), 25% (Wysoki).
 *  Braki danych:
       * Rekordy z brakami w kluczowych zmiennych (`club_name` lub `wage_eur`) zostały odfiltrowane.
-      W kolumnie `player_traits` braki oznaczają, że zawodnik nie ma przypisanych specjalnych cech i zostały zastąpione pustym ciągiem znaków*
+      W kolumnie `player_traits` braki oznaczają, że zawodnik nie ma przypisanych specjalnych cech i zostały zastąpione pustym ciągiem znaków.
 *  Duplikaty (co najmniej dokładne, a jeśli to możliwe, także bardzo podobne):
      * Zostało dodane sprawdzanie duplikatów po kolumnie (*player_id*)., ale nie występują.
 *  Podstawowe statystyki wejścia (długość tekstu, rozmiar obrazu, czas trwania nagrania):
 Kolumna 'player_traits': średnia długość = 8.9 znaków, max = 91 znaków
 Kolumna 'player_positions': średnia długość = 5.1 znaków, max = 13 znaków
-  *    kilka przykładów:
-     short_name  overall  wage_eur player_positions                                                                      player_traits
+*  Kilka przykładów:
+    * short_name  overall  wage_eur player_positions                                                                      player_traits
 0     K. Mbappé       91  230000.0           ST, LW                                                Quick Step +, Rapid, Flair, Trivela
 1    E. Haaland       91  340000.0               ST                                              Acrobatic +, Power Header, Quick Step
 2  K. De Bruyne       91  350000.0          CM, CAM    Pinged Pass +, Dead Ball, Incisive Pass, Long Ball Pass, Whipped Cross, Trivela
