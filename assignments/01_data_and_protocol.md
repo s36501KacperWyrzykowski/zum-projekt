@@ -15,12 +15,12 @@ Zanim cokolwiek wytrenujesz, ustalasz, co mierzysz i jak, a final test zamrażas
 2. Jednostka generalizacji z uzasadnieniem: do jakich przyszłych danych ma działać model.
    * Jednostką generalizacji jest pojedynczy piłkarz. Model ma działać dla zawodników z nowych klubów/lig, których algorytm wcześniej nie widział, co sprawdzimy dzieląc dane na poziomie klubów.
 3. Audyt danych:
-   * liczba przykładów i rozkład klas:
+ *  liczba przykładów i rozkład klas:
      W zbiorze znajduje się 18350 unikalnych piłkarzy z edycji FC 24. Rozkład klas na zbiorze treningowym wynosi odpowiednio: ok. 25% (Niski), 50% (Średni), 25% (Wysoki).
-  *  braki danych:
+ *  braki danych:
       Rekordy z brakami w kluczowych zmiennych (`club_name` lub `wage_eur`) zostały odfiltrowane.
       W kolumnie `player_traits` braki oznaczają, że zawodnik nie ma przypisanych specjalnych cech i zostały zastąpione pustym ciągiem znaków*
-     duplikaty (co najmniej dokładne, a jeśli to możliwe, także bardzo podobne); *Zostało dodane sprawdzanie duplikatów po kolumnie (*player_id*)., ale nie występują.
+ *  duplikaty (co najmniej dokładne, a jeśli to możliwe, także bardzo podobne): Zostało dodane sprawdzanie duplikatów po kolumnie (*player_id*)., ale nie występują.
   *  podstawowe statystyki wejścia (długość tekstu, rozmiar obrazu, czas trwania nagrania):
 Kolumna 'player_traits': średnia długość = 8.9 znaków, max = 91 znaków
 Kolumna 'player_positions': średnia długość = 5.1 znaków, max = 13 znaków
