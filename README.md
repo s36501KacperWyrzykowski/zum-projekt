@@ -114,8 +114,6 @@ Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statysty
 - **Sposób pobrania**: Pobrany bezpośrednio z repozytorium źródłowego Kaggle i umieszczony lokalnie w katalogu projektu.
 - **Liczba przykładów**: Łącznie 18350 wierszy w pełnym zbiorze przed czyszczeniem braków; po czyszczeniu i podziale na zbiory łącznie 18263 przykłady (10974 trening, 3591 walidacja, 3698 test).
 - **Lista klas**: Trzy przedziały zarobków: `Niski` (0), `Średni` (1), `Wysoki` (2).
-- **Sposób oznaczenia etykiet**: Etykiety zostały wyznaczone poprzez podział ciągłej zmiennej zarobków (`wage_eur`) na trzy rozłączne przedziały, po czym `wage_eur` oraz inne zmienne powodujące wyciek celu są usuwane z cech wejściowych modelu.
-- **Znane ograniczenia**: Nierównomierny rozkład klas (w klasie zarobków wysokich znajduje się znacznie mniej zawodników niż w niskich), co wymaga zastosowania odpowiednich metryk (Macro-F1).
 
 | Zbiór | Niski | Średni | Wysoki | Razem |
 |---|---:|---:|---:|---:|
@@ -123,6 +121,10 @@ Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statysty
 | validation | 1105 | 1637 | 849 | 3591 |
 | final test | 1071 | 1746 | 881 | 3698 |
 | Razem | 5805 | 8202 | 4256 | 18263 |
+
+- **Sposób oznaczenia etykiet**: Etykiety zostały wyznaczone poprzez podział ciągłej zmiennej zarobków (`wage_eur`) na trzy rozłączne przedziały, po czym `wage_eur` oraz inne zmienne powodujące wyciek celu są usuwane z cech wejściowych modelu.
+- **Znane ograniczenia**: Nierównomierny rozkład klas (w klasie zarobków wysokich znajduje się znacznie mniej zawodników niż w niskich), co wymaga zastosowania odpowiednich metryk (Macro-F1).
+
 
 ## Protokół (Zadanie 1)
 
