@@ -114,12 +114,14 @@ Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statysty
 - **Sposób pobrania**: Pobrany bezpośrednio z repozytorium źródłowego Kaggle i umieszczony lokalnie w katalogu projektu.
 - **Liczba przykładów**: Łącznie 18350 wierszy w pełnym zbiorze (po podziale: 10974 trening, 3591 walidacja, 3698 test).
 - **Lista klas**: Trzy przedziały zarobków: `Niski`, `Średni`, `Wysoki`.
-  | Zbiór | Niski | Średni | Wysoki |
+  
+| Zbiór | Niski | Średni | Wysoki |
 |---|---|---|---|
 | train | 3629 | 4819 | 2526 | 10974 |
 | validation | 1105 | 1637 | 849 |
 | final test | 1071 | 1746 | 881 |
 | razem | 5805 | 8202 | 4256 |
+
 - **Sposób oznaczenia etykiet**: Etykiety zostały wyznaczone poprzez podział ciągłej zmiennej zarobków na trzy rozłączne przedziały.
 - **Znane ograniczenia**: Nierównomierny rozkład klas (w klasie zarobków wysokich znajduje się znacznie mniej zawodników niż w niskich), co wymaga zastosowania odpowiednich metryk (Macro-F1).
 
