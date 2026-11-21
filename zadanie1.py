@@ -68,11 +68,7 @@ if group_col in df.columns:
 else:
   raise ValueError(f"Brak kolumny grupowej '{group_col}' w zbiorze danych!")
 
-# 4. USUNIĘCIE WYCIEKÓW FINANSOWYCH
-cols_to_drop = ["value_eur", "release_clause_eur"]
-df = df.drop(columns=[c for c in cols_to_drop if c in df.columns])
-
-# 5. PODZIAŁ GRUPOWY (JEDNOSTKA GENERALIZACJI PO KLUBACH)
+# 4. PODZIAŁ GRUPOWY (JEDNOSTKA GENERALIZACJI PO KLUBACH)
 print("\nTworzenie podziału na Train, Validation i Final Test...")
 
 gss_outer = GroupShuffleSplit(n_splits=1, test_size=0.20, random_state=42)
@@ -91,7 +87,7 @@ train_idx, val_idx = next(
 df_train = df_train_val.iloc[train_idx].reset_index(drop=True)
 df_val = df_train_val.iloc[val_idx].reset_index(drop=True)
 
-# 6. WYZNACZENIE PROGÓW ZAROBKÓW WYŁĄCZNIE NA TRAIN
+# 5. WYZNACZENIE PROGÓW ZAROBKÓW WYŁĄCZNIE NA TRAIN
 q25 = df_train["wage_eur"].quantile(0.25)
 q75 = df_train["wage_eur"].quantile(0.75)
 
@@ -112,8 +108,16 @@ df_train["target_class"] = df_train["wage_eur"].apply(assign_class)
 df_val["target_class"] = df_val["wage_eur"].apply(assign_class)
 df_test["target_class"] = df_test["wage_eur"].apply(assign_class)
 
-# 7. STATYSTYKI ZBIORÓW DLA PUNKTU 4
-print("\n--- STATYSTYKI ZBIORÓW (PUNKT 4) ---")
+# 6. USUNIĘCIE WYCIEKÓW FINANSOWYCH PO WYZNACZENIU KLAS
+cols_to_drop = ["value_eur", "release_clause_eur", "wage_eur"]
+df = df.drop(columns=[c for c in cols_to_drop if c in df.columns])
+df_train_val = df_train_val.drop(columns=[c for c in cols_to_drop if c in df_train_val.columns])
+df_train = df_train.drop(columns=[c for c in cols_to_drop if c in df_train.columns])
+df_val = df_val.drop(columns=[c for c in cols_to_drop if c in df_val.columns])
+df_test = df_test.drop(columns=[c for c in cols_to_drop if c in df_test.columns])
+
+# 7. STATYSTYKI ZBIORÓW
+print("\n--- STATYSTYKI ZBIORÓW ---")
 for name, subset in [
     ("Train", df_train),
     ("Validation", df_val),
@@ -124,6 +128,44 @@ for name, subset in [
   print(f"Zbiór {name}:")
   print(f"  - Liczba przykładów (piłkarzy): {n_samples}")
   print(f"  - Liczba niezależnych jednostek (klubów): {n_clubs}")
+
+print("\n--- ROZKŁAD KLAS W ZBIORACH ---")
+subsets_list = [
+    ("Train", df_train),
+    ("Validation", df_val),
+    ("Final Test", df_test),
+]
+class_labels = {
+    0: "0 (Niski)",
+    1: "1 (Średni)",
+    2: "2 (Wysoki)",
+}
+
+rows = []
+for name, subset in subsets_list:
+  total = len(subset)
+  vc = subset["target_class"].value_counts()
+  row = {"Zbiór": name}
+  for cls_id, cls_name in class_labels.items():
+    cnt = int(vc.get(cls_id, 0))
+    pct = (cnt / total * 100) if total > 0 else 0.0
+    row[cls_name] = f"{cnt} ({pct:.1f}%)"
+  row["Razem"] = total
+  rows.append(row)
+
+all_df = pd.concat([s for _, s in subsets_list], ignore_index=True)
+total_all = len(all_df)
+vc_all = all_df["target_class"].value_counts()
+total_row = {"Zbiór": "Razem"}
+for cls_id, cls_name in class_labels.items():
+  cnt = int(vc_all.get(cls_id, 0))
+  pct = (cnt / total_all * 100) if total_all > 0 else 0.0
+  total_row[cls_name] = f"{cnt} ({pct:.1f}%)"
+total_row["Razem"] = total_all
+rows.append(total_row)
+
+class_dist_df = pd.DataFrame(rows)
+print(class_dist_df.to_string(index=False))
 
 # 8. ZAPIS PLIKÓW ID I PRÓBKI
 os.makedirs("splits", exist_ok=True)

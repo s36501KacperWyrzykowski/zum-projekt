@@ -101,6 +101,7 @@ Uzupełniaj sekcje w zadaniach podanych w nawiasach. Zastępuj teksty w nawiasac
 * Tytuł: Predykcja przedziałów zarobków piłkarzy z wykorzystaniem statystyk liczbowych i reprezentacji tekstowych.
 * Autor: Kacper Wyrzykowski
 * Modalność: Dane numeryczne oraz tekstowe.
+<<<<<<< HEAD
 * Problem klasyfikacji: Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (`Niski`, `Średni`, `Wysoki`).
 
 ## Problem i pytanie eksperymentalne (Zadanie 1)
@@ -114,6 +115,21 @@ Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statysty
 - **Sposób pobrania**: Pobrany bezpośrednio z repozytorium źródłowego Kaggle i umieszczony lokalnie w katalogu projektu.
 - **Liczba przykładów**: Łącznie 18350 wierszy w pełnym zbiorze (po podziale: 10974 trening, 3591 walidacja, 3698 test).
 - **Lista klas**: Trzy przedziały zarobków: `Niski`, `Średni`, `Wysoki`.
+=======
+* Problem klasyfikacji: Problem polega na klasyfikacji piłkarzy do 3 przedziałów zarobków (Niski, Średni, Wysoki).
+
+## Problem i pytanie eksperymentalne (Zadanie 1)
+
+Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statystyk liczbowych poprawi skuteczność klasyfikacji (Macro-F1) na nowych, nieznanych zawodnikach?
+
+## Dane i licencja (Zadanie 1)
+
+* Źródło i link: Publiczny zbiór danych dotyczący piłkarzy z EA FC: https://www.kaggle.com/datasets/stefanoleone992/ea-sports-fc-24-complete-player-dataset
+* Licencja: Licencja typu Open Source.
+* Sposób pobrania: Pobrany bezpośrednio z repozytorium źródłowego Kaggle i umieszczony lokalnie w katalogu projektu.
+* Liczba przykładów: Łącznie 18350 wierszy w pełnym zbiorze (po podziale: 10974 trening, 3591 walidacja, 3698 test).
+* Lista klas: Trzy przedziały zarobków: `Niski`, `Średni`, `Wysoki`.
+>>>>>>> f95aafd (Uzupelnienie dokumentacji, rozkladu klas i wykluczenia wage_eur w Zadaniu 1)
   
 | Zbiór | Niski | Średni | Wysoki |
 |---|---|---|---|
@@ -122,16 +138,26 @@ Czy dodanie tekstowych reprezentacji z modelu pretrained do klasycznych statysty
 | final test | 1071 | 1746 | 881 |
 | razem | 5805 | 8202 | 4256 |
 
+<<<<<<< HEAD
 - **Sposób oznaczenia etykiet**: Etykiety zostały wyznaczone poprzez podział ciągłej zmiennej zarobków na trzy rozłączne przedziały.
 - **Znane ograniczenia**: Nierównomierny rozkład klas (w klasie zarobków wysokich znajduje się znacznie mniej zawodników niż w niskich), co wymaga zastosowania odpowiednich metryk (Macro-F1).
+=======
+* Sposób oznaczenia etykiet: Etykiety zostały wyznaczone poprzez podział ciągłej zmiennej zarobków na trzy rozłączne przedziały.
+* Znane ograniczenia: Nierównomierny rozkład klas (w klasie zarobków wysokich znajduje się znacznie mniej zawodników niż w niskich), co wymaga zastosowania odpowiednich metryk (Macro-F1).
+>>>>>>> f95aafd (Uzupelnienie dokumentacji, rozkladu klas i wykluczenia wage_eur w Zadaniu 1)
 
 ## Protokół (Zadanie 1)
 
 * Jednostka generalizacji: Rozłączna grupa zawodnik–klub.
 * Podział: Podział losowy z zachowaniem proporcji klas: 60% (train), 20% (validation) oraz 20% (final test).
 * Metryka główna i pomocnicze: Metryka główna: Macro-F1, Metryka pomocnicza: Accuracy (Dokładność). Dzięki Macro-F1, model nie faworyzuje najliczniejszej klasy.
+<<<<<<< HEAD
 * Seed: `random_state = 42`
 * Final test: zamrożony w commicie z tagiem `task-1`, identyfikatory w `splits/`. Jeśli podział był później poprawiany, podaj commit poprawionej wersji i opisz zmianę w dzienniku zmian.
+=======
+* Seed: random_state = 42
+* Final test: zamrożony w commicie z tagiem task-1, identyfikatory w splits/. Jeśli podział był później poprawiany, podaj commit poprawionej wersji i opisz zmianę w dzienniku zmian.
+>>>>>>> f95aafd (Uzupelnienie dokumentacji, rozkladu klas i wykluczenia wage_eur w Zadaniu 1)
 
 | Zbiór | Liczba przykładów | Liczba niezależnych jednostek |
 |---|---|---|
